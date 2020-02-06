@@ -1,0 +1,416 @@
+/* BASIC */
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  height: 100vh;
+}
+header{
+  top:0;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+section{
+  min-height: 35em;
+  height: auto;
+}
+footer{
+  bottom: 0;
+  position: relative;
+  background-color: #343a40!important;
+  width: 100%;
+  height: auto;
+}
+
+h1{
+  font-family: 'Baloo Thambi', cursive;
+  font-size: 8vh;
+}
+h2{
+  font-family: 'Baloo Thambi', cursive;
+  font-size: 3vh;
+}
+
+
+/* Caption text */
+.text { 
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+.textonglet {
+  color: #f2f2f2;
+  font-size: 3vh;
+  text-align: center;
+}
+
+.textdebienvenue{
+  display: block;
+  margin-top: 15vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  width: 45vh;
+  height: 100%;
+  font-size: 2.4vh;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.polaroide{
+  position: relative;
+  background-image: url("../img/polaroide.png");
+  background-size: 100%;
+  background-repeat:no-repeat;
+  height: 100vh;
+}
+
+.titre{
+  margin-top: 10vh;
+}
+
+/*image*/
+
+.bandrole{
+  display: block;
+  margin-left: auto;
+  margin-right: auto 
+}
+
+.imgborne{
+  top :10vh; 
+  left : 25%;
+  position: relative;
+  width: 30vh;
+}
+
+.imgborne img{
+  position: relative;
+  top: 5%;
+  height: 75vh;
+  width: 30vh;
+  border-radius: 10px 10px 10px 10px;
+}
+
+/* overlay */
+  .contphoto{
+    position: relative;
+    width: 100%;
+  }
+  .image {
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 139, 186, 0.52);
+  }
+  .contphoto:hover .overlay {
+    opacity: 1;
+  }
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+/*Contact*/
+  #contact input[type="text"],
+  #contact input[type="email"],
+  #contact input[type="tel"],
+  #contact input[type="url"],
+  #contact textarea,
+  #contact button {
+    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+  }
+
+  #contact {
+    background: #F9F9F9;
+    padding: 25px;
+    margin: 150px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+
+  #contact h3 {
+    display: block;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  #contact h4 {
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  #contact input[type="text"],
+  #contact input[type="email"],
+  #contact input[type="tel"],
+  #contact input[type="url"],
+  #contact textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+  }
+
+  #contact input[type="text"]:hover,
+  #contact input[type="email"]:hover,
+  #contact input[type="tel"]:hover,
+  #contact input[type="url"]:hover,
+  #contact textarea:hover {
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #aaa;
+  }
+
+  #contact textarea {
+    height: 100px;
+    max-width: 100%;
+    resize: none;
+  }
+
+  #contact button {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: rgb(76, 122, 175);
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  #contact button:hover {
+    background: rgb(76, 122, 175);
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  #contact button:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  #contact input:focus,
+  #contact textarea:focus {
+    outline: 0;
+    border: 1px solid #aaa;
+  }
+
+/*login && register*/
+  #connection input[type="text"],
+  #connection input[type="email"],
+  #connection input[type="tel"],
+  #connection input[type="url"],
+  #connection input[type="password"],
+  #connection textarea,
+  #connection button {
+    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+  }
+
+  #connection {
+    background: #F9F9F9;
+    padding: 25px;
+    margin: 150px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+
+  #connection h3 {
+    display: block;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  #connection h4 {
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  #connection input[type="text"],
+  #connection input[type="email"],
+  #connection input[type="tel"],
+  #connection input[type="url"],
+  #connection input[type="password"],
+  #connection textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+  }
+
+  #connection input[type="text"]:hover,
+  #connection input[type="email"]:hover,
+  #connection input[type="tel"]:hover,
+  #connection input[type="url"]:hover,
+  #connection input[type="password"]:hover,
+  #connection textarea:hover {
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #aaa;
+  }
+
+  #connection textarea {
+    height: 100px;
+    max-width: 100%;
+    resize: none;
+  }
+
+  #connection button {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: rgb(76, 122, 175);
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  #connection button:hover {
+    background: rgb(76, 122, 175);
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  #connection button:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  #connection a {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: rgb(76, 122, 175);
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  #connection a:hover {
+    background: rgb(76, 122, 175);
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  #connection a:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  #connection input:focus,
+  #connection textarea:focus {
+    outline: 0;
+    border: 1px solid #aaa;
+  }
+
+/*Police*/
+
+/*Autre*/
+.Article{
+  margin-left: 5vh
+}
+
+.cadre {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: #F9F9F9;
+  padding: 1vh;
+  margin: 150px 0;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+.copyright {
+  text-align: center;
+}
+::-webkit-input-placeholder {
+  color: #888;
+}
+
+:-moz-placeholder {
+  color: #888;
+}
+
+::-moz-placeholder {
+  color: #888;
+}
+
+:-ms-input-placeholder {
+  color: #888;
+}
+
+/* panier */
+
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+table#t01 th {
+  background-color: black;
+  color: white;
+}
+.reservation {
+background-color: aqua
+}
