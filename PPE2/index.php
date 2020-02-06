@@ -36,63 +36,63 @@
         {
             switch ($_GET['page']) {
                 case 'acceuil':
-                    include("page/acceuil.php");
-                    break;
+                  include("page/tous/acceuil.php");
+                  break;
                 case 'léquipe':
-                    include("page/Equipe.php");
-                    break;
+                  include("page/tous/equipe.php");
+                  break;
                 case 'Contact':
-                    include("page/contact/contact.php");
-                    break;                
+                  include("page/tous/contact/contact.php");
+                  break;                
                 case 'mail':
-                    include("page/contact/mail.php");
-                    break;                
-                case 'home':
-                    include("page/home/home.php");
-                    break;                
-                case 'panier':
-                    include("page/pannier/index.php");
-                    break;                
-                case 'commandeencour':
-                    include("page/commandes/commandes.php");
-                    break;                
-                case 'commande':
-                    include("page/commandes/mescommandes.php");
-                    break;                
+                  include("page/tous/contact/mail.php");
+                  break;
+                case 'login':
+                  include("page/tous/connection/login.php");                       
+                  break;                
+                case 'register':
+                    include("page/tous/connection/register.php");
+                    break;
                 case 'logout':
-                    include("page/connection/logout.php");
-                    break;                
+                  include("page/tous/connection/logout.php");
+                  break;             
+                case 'panier':
+                  include("page/user/pannier/index.php");
+                  break;                
+                case 'commandeencour':
+                  include("page/user/commandes/commandes.php");
+                  break;                
+                case 'commande':
+                  include("page/user/commandes/mescommandes.php");
+                  break;        
                 case 'mescommande':
-                    include("page/commandes/mescommandes.php");
-                    break;                
+                  include("page/user/commandes/mescommandes.php");
+                  break;
+                case 'home':
+                  include("page/user/home/home.php");
+                  break;                
                 case 'article':
-                    include("page/home/article.php");
+                    include("page/user/home/article.php");
                     break;                
                 case 'articles':
-                    include("page/home/articles.php");
+                    include("page/user/home/articles.php");
                     break;                
                 case 'admincommande':
-                    include("page/commandes/admin.php");
+                    include("page/admin/admincommande.php");
                     break;                
                 case 'adminborne':
-                    include("page/borne/admin.php");
-                    break;               
-                case 'login':
-                    include("page/connection/login.php");                       
-                    break;                
-                case 'register':
-                    include("page/connection/register.php");
-                    break;
+                    include("page/admin/adminborne.php");
+                    break;                 
                 default:
-                    include("page/acceuil.php");
+                    include("page/tous/acceuil.php");
             }
         }
         else{
-            include("page/acceuil.php");
+            include("page/tous/acceuil.php");
         }
       //bas de la page
         include("page/footer.php");
-	?>
+			?>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
       <div class="scroll-to-top d-lg-none position-fixed ">
         <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
