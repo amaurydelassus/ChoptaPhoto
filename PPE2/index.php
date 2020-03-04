@@ -1,10 +1,10 @@
 <?php
     session_start();
-    include("obj/Utilisateur.php");
-    include("obj/BDD.php");
-    include("obj/Article.php");
-    include("obj/Commande.php");
-    include("obj/Borne.php");
+    include("object/Utilisateur.php");
+    include("object/BDD.php");
+    include("object/Article.php");
+    include("object/Commande.php");
+    include("object/Borne.php");
     include("function/fonctions-panier.php");
     include("page/parameter.php");
 ?>
