@@ -1,6 +1,8 @@
-<?phpif(isset($_SESSION["login"]) && $_SESSION['login'] != "")
+<?php
+if(isset($_SESSION["login"]) && $_SESSION['login'] != "")
 {
-	?><div class="container-fluid">
+	?>
+	<div class="container-fluid">
 		<div class="cadre">
 			<h1>Récapitulatif de la commande</h1>
 			<?php
@@ -60,7 +62,8 @@
 
 			?>
 		</div>
-	</div><?php
+	</div>
+<?php
 }
 else
 {
