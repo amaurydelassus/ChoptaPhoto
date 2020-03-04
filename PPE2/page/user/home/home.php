@@ -8,7 +8,7 @@
                 <div class="row" id="bornes">
                 <?php
                         $c = new Article();
-                        $c->getAllArticleByType(2,$bdd);
+                        $c->getAllArticleByType(2,$bdd); // a modifier
                     ?>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <div class="row" id="consomable">
                     <?php
                         $c = new Article();
-                        $c->getAllArticleByType(1,$bdd);
+                        $c->getAllArticleByType(1,$bdd); // a modifier
                     ?>
                 </div>
             </div>
