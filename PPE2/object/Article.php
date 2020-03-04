@@ -202,7 +202,7 @@
                 <?php
                 }
             }
-        //Affichage des article par type
+        //Affichage des article par type // a modifier
             public function getAllArticleByType($idType,$bdd)
             {
                 $oRes = $bdd->executer("SELECT * FROM article WHERE idType LIKE $idType");
