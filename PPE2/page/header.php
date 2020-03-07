@@ -45,12 +45,12 @@
               {
                 //si utilisateur est admin
                 ?>
-                  <div class="col-md-2 nav-item ">
+                  <!-- <div class="col-md-2 nav-item ">
                     <a class="dropdown-item" href="index.php?page=admincommande">Admin Commande <span class="sr-only">(current)</span></a>
                   </div>
                   <div class="col-md-2 nav-item ">
                     <a class="dropdown-item" href="index.php?page=adminborne">Admin Bornes<span class="sr-only">(current)</span></a>
-                  </div>
+                  </div> -->
                 <?php
               }
               ?>
