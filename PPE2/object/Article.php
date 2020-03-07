@@ -2,7 +2,6 @@
     class Article
     {   
         private     $id;
-        private     $idType;
         private     $ref;
         private     $nom;
         private     $prix;
@@ -11,9 +10,8 @@
         private     $image;
 
         //Constructeur
-            public function __construct($idType=null, $ref=null, $nom=null, $prix=null, $description=null, $stoque=null,$image=null)
+            public function __construct($ref=null, $nom=null, $prix=null, $description=null, $stoque=null,$image=null)
             {
-                $this->idType=$idType;
                 $this->ref=$ref;
                 $this->nom=$nom;
                 $this->prix=$prix;
@@ -30,17 +28,6 @@
             public function setId($id)
             {
                 $this->id = $id;
-
-                return $this;
-            }
-
-            public function getIdType()
-            {
-                return $this->idType;
-            }
-            public function setIdType($idType)
-            {
-                $this->idType = $idType;
 
                 return $this;
             }
@@ -119,130 +106,46 @@
         //Info Article By ID
             public function getInfoArticleById($id,$bdd)
             {
-                $oRes = $bdd->executer("SELECT * FROM article WHERE id LIKE $id");
+                $oRes = $bdd->executer("SELECT * FROM article WHERE id_Article LIKE $id");
                 while($Article = $oRes->fetch())
                 {
-                    $this->setIdType($Article->idType); 
-                    $this->setRef($Article->id); 
+                    $this->setRef($Article->id_Article); 
                     $this->setNom($Article->nom); 
                     $this->setPrix($Article->prix);
                     $this->setDescription($Article->description);
                     $this->setStoque($Article->stock);
-                    $this->setImage($Article->image_source);              
+                    // $this->setImage($Article->image_source);              
                     $out['id']          = $this->getRef();
                     $out['Nom']         = $this->getNom();
                     $out['Prix']        = $this->getPrix();
                     $out['Description'] = $this->getDescription();
                     $out['Stoque']      = $this->getStoque();
                     $out['Image']       = $this->getImage();
-                    $out['Type']        = $this->getIdType();
                     return $out;
                 }
             }
-        //Affichage d'un article by article
-            public function getArticle($id,$bdd)
-            {
-                $oRes = $bdd->executer("SELECT * FROM article WHERE id LIKE $id");
-                while($Article = $oRes->fetch())
-                {
-                    $this->setIdType($Article->idType); 
-                    $this->setRef($Article->id); 
-                    $this->setNom($Article->nom); 
-                    $this->setPrix($Article->prix);
-                    $this->setDescription($Article->description);
-                    $this->setStoque($Article->stock);
-                    $this->setImage($Article->image_source);
-                    ?>
-                    <div class="Article" id=<?php echo $this->getRef(); ?>>
-                        <p id="title"><?php echo $this->getNom(); ?><br/></p><br>
-                        <img src="<?php echo $this->getImage(); ?>"/></a><br/>
-                        <p><?php echo $this->getPrix(); ?>€<br/></p>
-                        <p>Encore <?php echo $this->getStoque(); ?> en stock<br/></p>
-                            
-                        <?php
-                            if($this->getIdType() == 1){
-                                echo '<a href="index.php?page=panier&action=ajout&amp;id='.$this->getRef().'&amp;l='. $this->getNom().'&amp;q=1&amp;p='.$this->getPrix().'">Ajouter au panier</a>';
-                            }
-                            else
-                            {
-                            ?>
-                                <p><a href="index.php?page=reservation?id=<?php $_GET['id']?>">Reserver</a></p>
-                            <?php
-                            }
-                        ?>
-                    </div>
-                    <?php
-                }
-            }
-
         //Affichage tout les articles
             public function getAllArticle($bdd)
             {
                 $oRes = $bdd->executer("SELECT * FROM article");
+                $i = 0;
                 while($Article = $oRes->fetch())
                 {
-                    $this->setRef($Article->id); 
+                    $this->setRef($Article->id_Article); 
                     $this->setNom($Article->nom); 
                     $this->setPrix($Article->prix);
                     $this->setDescription($Article->description);
                     $this->setStoque($Article->stock);
-                    $this->setImage($Article->image_source);
-                ?>
-                    <div class="Article" id=<?php echo $this->getRef(); ?>>
-
-                        ------------------------------------ <br/>
-                        Image : <img src="<?php echo $this->getImage(); ?>"/></a><br/>
-                        Ref : <?php echo $this->getRef(); ?><br/>
-                        Titre : <?php echo $this->getNom(); ?><br/>
-                        prix : <?php echo $this->getPrix(); ?><br/>
-                        stoque :<?php echo $this->getStoque(); ?><br/>
-
-                        ------------------------------------ <br>
-                    </div>
-                <?php
+                    // $this->setImage($Article->image_source);
+                    $out[$i]['id']          = $this->getRef();
+                    $out[$i]['Nom']         = $this->getNom();
+                    $out[$i]['Prix']        = $this->getPrix();
+                    $out[$i]['Description'] = $this->getDescription();
+                    $out[$i]['Stoque']      = $this->getStoque();
+                    $out[$i]['Image']       = $this->getImage();
+                    $i++;
                 }
-            }
-        //Affichage des article par type // a modifier
-            public function getAllArticleByType($idType,$bdd)
-            {
-                $oRes = $bdd->executer("SELECT * FROM article WHERE idType LIKE $idType");
-                while($Article = $oRes->fetch())
-                {
-                    $this->setIdType($Article->idType); 
-                    $this->setRef($Article->id); 
-                    $this->setNom($Article->nom); 
-                    $this->setPrix($Article->prix);
-                    $this->setDescription($Article->description);
-                    $this->setStoque($Article->stock);
-                    $this->setImage($Article->image_source);
-                ?>
-                    <div class="col-md-3 Article" onclick='location.href="index.php?page=article&id=<?php echo $this->getRef()?>"'>
-                            ------------------------------------ <br/>
-                            <img src="<?php echo $this->getImage(); ?>"/></a><br/>
-                            Ref : <?php echo $this->getRef(); ?><br/>
-                            Titre : <?php echo $this->getNom(); ?><br/>
-                            prix : <?php echo $this->getPrix(); ?><br/>
-                            stock :<?php echo $this->getStoque(); ?><br/>
-
-                            ------------------------------------ <br>
-                    </div>
-                    
-                <?php
-                }
-            }
-            public function getAllBorneName($bdd)
-            {
-                $oRes = $bdd->executer("SELECT * FROM article WHERE idType LIKE 2");
-                while($Article = $oRes->fetch())
-                {
-                    $this->setIdType($Article->idType); 
-                    $this->setRef($Article->id); 
-                    $this->setNom($Article->nom); 
-                    $this->setPrix($Article->prix);
-                ?>
-                    <option value="<?php echo $this->getRef();?>"><?php echo $this->getNom();?></option>
-                <?php
-                }
+                return $out;
             }
         //Affichage tout les articles commande
             public function getAllArticleCommande($bdd)
