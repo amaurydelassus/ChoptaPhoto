@@ -18,23 +18,7 @@ if(isset($_SESSION["login"]) && $_SESSION['login'] != "")
                 <p><?php echo $article['Prix']; ?>€<br/></p>
                 <p>Encore <?php echo $article['Stoque']; ?> en stock<br/></p> 
                 <?php
-                    if($article['Type'] == 1)
-                    {
-                        echo '<a href="index.php?page=panier&action=ajout&amp;id='.$article['id'].'&amp;l='. $article['Nom'].'&amp;q=1&amp;p='.$article['Prix'].'">Ajouter au panier</a>';
-                    }
-                    else
-                    {
-                        if(isset($_GET["reservation"]) && ($_GET["reservation"]) == "on")
-                        {
-                            include("page/reservation/index.php"); 
-                        }
-                        else
-                        {
-                            ?>
-                                <p><a href="index.php?page=article&amp;id=4&amp;reservation=on">Reserver</a></p>
-                            <?php 
-                        }
-                    }
+                echo '<a href="index.php?page=panier&action=ajout&amp;id='.$article['id'].'&amp;l='. $article['Nom'].'&amp;q=1&amp;p='.$article['Prix'].'">Ajouter au panier</a>';
             }
         echo '</div>';
     echo '</div>';
