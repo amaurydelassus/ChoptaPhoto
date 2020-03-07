@@ -5,6 +5,7 @@
     include("object/Article.php");
     include("object/Commande.php");
     include("object/Borne.php");
+    include("object/Reservation.php");
     include("function/fonctions-panier.php");
     include("page/parameter.php");
 ?>
@@ -71,6 +72,9 @@
                 case 'home':
                   include("page/user/home/home.php");
                   break;                
+                case 'borne':
+                    include("page/user/home/borne.php");
+                    break;                
                 case 'article':
                     include("page/user/home/article.php");
                     break;                
