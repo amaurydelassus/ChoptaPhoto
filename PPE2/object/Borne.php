@@ -1,85 +1,99 @@
 <?php
     class Borne extends ArticleCommander
     {
-        private     $id;
-        private     $idUser;
-        private     $idBorne;
-        private     $dateDebut;
-        private     $dateFin;
+        private     $id_Borne;
+        private     $nom;
+        private     $prix;
+        private     $description;
 
-        public function __construct($idUser=null, $idBorne=null, $dateDebut=null, $dateFin=null)
+        public function __construct($id_Borne=null,$nom=null,$prix=null,$descritpion=null)
         {
-            $this->setId(-1);
-            $this->setIdUser($idUser);
-            $this->setIdBorne($idBorne);
-            $this->setDateDebut($dateDebut);
-            $this->setdateFin($dateFin);
+            $this->setId_Borne($id_Borne);
+            $this->setNom($nom);
+            $this->setPrix($prix);
+            $this->setDescription($descritpion);
         }
         //GET & SET
-
-            public function getId()
+            public function getDescription()
             {
-                    return $this->id;
+                    return $this->description;
             }
-            public function setId($id)
+            public function setDescription($description)
             {
-                    $this->id = $id;
-
-                    return $this;
-            }
-            public function getDateDebut()
-            {
-                        return $this->dateDebut;
-            }
-            public function setDateDebut($dateDebut)
-            {
-                        $this->dateDebut = $dateDebut;
-
-                        return $this;
-            }
-            public function getdateFin()
-            {
-                    return $this->dateFin;
-            }
-            public function setdateFin($dateFin)
-            {
-                    $this->dateFin = $dateFin;
+                    $this->description = $description;
 
                     return $this;
             }
-            public function getIdUser()
+            public function getPrix()
             {
-                    return $this->idUser;
+                    return $this->prix;
             }
-            public function setIdUser($idUser)
+            public function setPrix($prix)
             {
-                    $this->idUser = $idUser;
+                    $this->prix = $prix;
 
                     return $this;
             }
-
-            public function getIdBorne()
+            public function getNom()
             {
-                    return $this->idBorne;
+                    return $this->nom;
             }
-
-            public function setIdBorne($idBorne)
+            public function setNom($nom)
             {
-                    $this->idBorne = $idBorne;
+                    $this->nom = $nom;
 
                     return $this;
             }
-        //reservation  d'une borne
-            public function resaBorne($id_user,$id,$debut,$fin,$bdd)
+            public function getId_Borne()
             {
-                $id = $id-3;
-                $req = 'INSERT INTO `resa_borne` (`id_user`, `id_borne`, `date_debut`, `date_fin`) VALUES ("'.$id_user.'","'.$id.'","'.$debut.'","'.$fin.'")';
-                $bdd->executer($req);
+                    return $this->id_Borne;
             }
-        //Affichage des borne d'un utilisateur
-            public function getMesBorne($idUser,$bdd)
+            public function setId_Borne($id_Borne)
             {
+                    $this->id_Borne = $id_Borne;
 
+                    return $this;
+            }
+            //Info Article By ID
+            public function getInfoBorneById($id,$bdd)
+            {
+                $oRes = $bdd->executer("SELECT * FROM borne WHERE id_Borne LIKE $id");
+                while($Borne = $oRes->fetch())
+                {
+                    $this->setRef($Borne->id_Borne);
+                    $this->setNom($Borne->nom); 
+                    $this->setPrix($Borne->prix);
+                    $this->setDescription($Borne->description);
+                    $this->setImage($Borne->URL);              
+                    $out['id']          = $this->getRef();
+                    $out['Nom']         = $this->getNom();
+                    $out['Prix']        = $this->getPrix();
+                    $out['Description'] = $this->getDescription();
+                    $out['Stoque']      = $this->getStoque();
+                    $out['Image']       = $this->getImage();
+                    return $out;
+                }
+            }
+            //Affichage tout les bornes
+            public function getAllBorne($bdd)
+            {
+                $oRes = $bdd->executer("SELECT * FROM borne");
+                $i = 0;
+                while($Borne = $oRes->fetch())
+                {
+                    $this->setId_Borne($Borne->id_Borne);
+                    $this->setNom($Borne->nom);
+                    $this->setPrix($Borne->prix);
+                    $this->setDescription($Borne->description);
+                    $this->setImage($Borne->URL);
+                    $out[$i]['id']          = $this->getId_Borne();
+                    $out[$i]['Nom']         = $this->getNom();
+                    $out[$i]['Prix']        = $this->getPrix();
+                    $out[$i]['Description'] = $this->getDescription();
+                    $out[$i]['Image']       = $this->getImage();
+                    $i++;
+                }
+                return $out;
             }
         //Affichage les borne pour admin
             public function getAllResborneById($id,$bdd)
@@ -103,6 +117,21 @@
                         </table>
                     </div>
                     <?php
+                }
+            }
+        // tout le nom des borne
+            public function getAllBorneName($bdd)
+            {
+                $oRes = $bdd->executer("SELECT * FROM article WHERE idType LIKE 2");
+                while($Article = $oRes->fetch())
+                {
+                    $this->setIdType($Article->idType); 
+                    $this->setRef($Article->id); 
+                    $this->setNom($Article->nom); 
+                    $this->setPrix($Article->prix);
+                ?>
+                    <option value="<?php echo $this->getRef();?>"><?php echo $this->getNom();?></option>
+                <?php
                 }
             }
         }
