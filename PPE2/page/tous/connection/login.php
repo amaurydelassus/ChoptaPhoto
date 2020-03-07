@@ -8,7 +8,9 @@
                     if($usr->seConnecter($bdd))
                     {
                         if($usr->createSession())
-                            ?><script>document.location.href="index.php?page=home&type=2"</script><?php
+                            ?>
+                                <script>document.location.href="index.php?page=home"</script>
+                            <?php
                         return(true);
                     }
                     else
