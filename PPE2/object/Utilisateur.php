@@ -52,11 +52,10 @@
 
 
         
-        //  Enregistrement
-        
+        //  Enregistrement 
             public function     enregistrer($BDD)
             {
-                $req = 'INSERT INTO users(login,nom,prenom,pwd,type) VALUES("'.$this->login.'","'
+                $req = 'INSERT INTO users(login,nom,prenom,pwd,id_Type) VALUES("'.$this->login.'","'
                     . $this->nom . '","' . $this->prenom . '","'
                     . $this->getPassword() . '","'. $this->getType() . '")';
                 $BDD->executer($req);
@@ -76,11 +75,11 @@
             {
                 if($res = $oRes->fetch())
                 {
-                $this->id = $res->id;
+                $this->id = $res->id_User;
                 $this->login = $res->login;
                 $this->nom = $res->nom;
                 $this->prenom = $res->prenom;
-                $this->type = $res->type;
+                $this->type = $res->id_Type;
                 return(true);
                 }
                     else{

@@ -59,7 +59,7 @@
             public function setCommande($bdd)
             {
                 $date = date('Y-m-d');
-                $req = 'INSERT INTO `commande` (`id_user`,`date_de_commande`) VALUES ("'.$this->idUser.'","'.$date.'")';
+                $req = 'INSERT INTO `commande` (`id_User`,`date_de_commande`) VALUES ("'.$this->idUser.'","'.$date.'")';
                 $bdd->executer($req);
                 $id = $bdd->dbo->lastInsertId();
                 return $id;
@@ -68,10 +68,10 @@
             public function getMesCommande($idUser,$bdd)
             {
                 echo '<div class="container-fluid">';
-                $oRes = $bdd->executer("SELECT * FROM commande WHERE id_user LIKE $idUser");
+                $oRes = $bdd->executer("SELECT * FROM commande WHERE id_User LIKE $idUser");
                 while($Commande = $oRes->fetch())
                 {
-                    $this->setId($Commande->id); 
+                    $this->setId($Commande->id_Commande); 
                     $this->setDateCommande($Commande->date_de_commande);
                     ?>
                     <div class="cadre">
@@ -179,17 +179,17 @@
         // Ajout d'article a une commande
             public function setArticleCommander($bdd)
             {
-                $req = 'INSERT INTO `article_commande` (`id_commande`, `id_article`, `qtt`) VALUES ("'.$this->idCommande.'", "'.$this->idArticle.'","'.$this->qtt.'");';
+                $req = 'INSERT INTO `contient` (`id_Commande`, `id_Article`, `quantiteCommande`) VALUES ("'.$this->idCommande.'", "'.$this->idArticle.'","'.$this->qtt.'");';
                 $bdd->executer($req);
             }
         // Affichage des article d'une commande
             public function getArticlesByCommande($idCommande,$bdd)
             {
-                $oRes = $bdd->executer("SELECT * FROM article_commande WHERE id_commande LIKE $idCommande");
+                $oRes = $bdd->executer("SELECT * FROM contient WHERE id_Commande LIKE $idCommande");
                 while($Article = $oRes->fetch())
                 {
-                    $this->setIdArticle($Article->id_article);
-                    $this->setQtt($Article->qtt);
+                    $this->setIdArticle($Article->id_Article);
+                    $this->setQtt($Article->quantiteCommande);
                     echo '<tr> ';
                     $id = $this->getIdArticle();
                     $a = new Article;
